@@ -17,8 +17,8 @@ saveBtn.on('click', test)
 function test(){
     var rowParent = $(this).parents()[1]
     var rowChild = $(rowParent).children()[0]
-    var input = $(rowChild).children()[0]
-    console.log($(input).val())
+    var inputEl = $(rowChild).children()[0]
+    console.log($(inputEl).val())
 };
 
 
