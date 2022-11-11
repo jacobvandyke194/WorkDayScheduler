@@ -18,9 +18,30 @@ function test(){
     var rowParent = $(this).parents()[1]
     var rowChild = $(rowParent).children()[0]
     var inputEl = $(rowChild).children()[0]
-    console.log($(inputEl).val())
+    var inputElId = $(rowChild).children()[0].id
+    
+
+    console.log(inputElId)
+
+    localStorage.setItem(`${inputElId}`, $(inputEl).val())
+
 };
 
+function savedNotes(inputEl, inputElId) {
+    var savedNotes = localStorage.getItem(inputElId);
+    var inputEl = savedNotes
+}
 
+window.addEventListener('load', (event) => {
+    event.preventDefault();
+    var rowParent = $(saveBtn).parents()[1]
+    var rowChild = $(rowParent).children()[0]
+    var inputEl = $(rowChild).children()[0]
+    var inputElId = $(rowChild).children()[0].id
 
+    inputEl.innerHTML = "Hello";
+    console.log(inputEl.value)
+    
+  });
 
+test();
