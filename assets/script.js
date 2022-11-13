@@ -28,32 +28,40 @@ function test(){
 
     thisBtn.innerHTML = "Save"
     
-    var nineAm = document.getElementById('nineAm')
+    var nineAm = $('.nineAm')
     nineAm.readOnly = false;
+    var tenAm = $('.tenAm')
+    tenAm.readOnly = false;
+    var elevenAm = $('.elevenAm')
+    elevenAm.readOnly = false;
+    var twelvePm = $('.twelvePm')
+    twelvePm.readOnly = false;
 
     console.log(inputElId)
-
-    localStorage.setItem(`${inputElId}`, $(inputEl).val())
-
-
     
-
+    localStorage.setItem(`${inputElId}`, $(inputEl).val())
+    
+    
+    
+    
 };
 
 const storage = {
-saveBtn: $('.saveBtn'),
-func: function recallStorage (){
-    var rowParent = $(this.saveBtn).parents()[1]
-    var rowChild = $(rowParent).children()[0]
-    var inputEl = $(rowChild).children()[0]
-    var inputElId = $(rowChild).children()[0].id
+    saveBtn: $('.saveBtn'),
+    func: function recallStorage (){
+        var rowParent = $(this.saveBtn).parents()[1]
+        var rowChild = $(rowParent).children()[0]
+        var inputEl = $(rowChild).children()[0]
+        var inputElId = $(rowChild).children()[0].id
+        
+        var stored = JSON.parse(localStorage.getItem(inputElId));
+        
+        console.log(typeof JSON.stringify(stored))
+        
+        document.getElementById('nineAm').value = localStorage.nineAm; 
 
-    var stored = JSON.parse(localStorage.getItem(inputElId));
-
-    console.log(typeof JSON.stringify(stored))
-
-    document.getElementById('nineAm').value = localStorage.nineAm; 
-}}
+        
+    }}
  storage.func();
 
 // changing bg color based on current time
