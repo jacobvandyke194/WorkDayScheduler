@@ -23,25 +23,31 @@ function test(){
 
     console.log(inputElId)
 
-    localStorage.setItem(`${inputElId}`, $(inputEl).val())
+    localStorage.setItem(`${inputElId}`, JSON.stringify($(inputEl).val()))
 
 };
 
-function savedNotes(inputEl, inputElId) {
-    var savedNotes = localStorage.getItem(inputElId);
-    var inputEl = savedNotes
-}
 
-window.addEventListener('load', (event) => {
-    event.preventDefault();
-    var rowParent = $(saveBtn).parents()[1]
-    var rowChild = $(rowParent).children()[0]
-    var inputEl = $(rowChild).children()[0]
-    var inputElId = $(rowChild).children()[0].id
+function recallStorage (){
+    document.getElementById('nineAm').value = localStorage.getItem(nineAm)
+    document.getElementById('tenAm').value = localStorage.tenAm
+    document.getElementById('elevenAm').value = localStorage.elevenAm
+    document.getElementById('twelvePm').value = localStorage.twelvePm
+    document.getElementById('onePm').value = localStorage.onePm
+    document.getElementById('twoPm').value = localStorage.twoPm
+    document.getElementById('threePm').value = localStorage.threePm
+    document.getElementById('fourPm').value = localStorage.fourPm
+    document.getElementById('fivePm').value = localStorage.fivePm
 
-    inputEl.innerHTML = "Hello";
-    console.log(inputEl.value)
-    
-  });
+    console.log(localStorage)
+    let testing = JSON.parse(localStorage.getItem(nineAm))
+    console.log(JSON.stringify(testing))
+  };
 
-test();
+recallStorage();
+
+
+// changing bg color based on current time
+
+
+
