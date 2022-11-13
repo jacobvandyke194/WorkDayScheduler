@@ -14,38 +14,47 @@ var saveBtn = $('.saveBtn');
 saveBtn.on('click', test) 
 
 
+
 function test(){
     var rowParent = $(this).parents()[1]
     var rowChild = $(rowParent).children()[0]
     var inputEl = $(rowChild).children()[0]
     var inputElId = $(rowChild).children()[0].id
     
+    console.log($(rowParent).children()[2])
+
+    var btnParent = $(rowParent).children()[2]
+    var thisBtn = $(btnParent).children()[0]
+
+    thisBtn.innerHTML = "Save"
+    
+    var nineAm = document.getElementById('nineAm')
+    nineAm.readOnly = false;
 
     console.log(inputElId)
 
-    localStorage.setItem(`${inputElId}`, JSON.stringify($(inputEl).val()))
+    localStorage.setItem(`${inputElId}`, $(inputEl).val())
+
+
+    
 
 };
 
+const storage = {
+saveBtn: $('.saveBtn'),
+func: function recallStorage (){
+    var rowParent = $(this.saveBtn).parents()[1]
+    var rowChild = $(rowParent).children()[0]
+    var inputEl = $(rowChild).children()[0]
+    var inputElId = $(rowChild).children()[0].id
 
-function recallStorage (){
-    document.getElementById('nineAm').value = localStorage.getItem(nineAm)
-    document.getElementById('tenAm').value = localStorage.tenAm
-    document.getElementById('elevenAm').value = localStorage.elevenAm
-    document.getElementById('twelvePm').value = localStorage.twelvePm
-    document.getElementById('onePm').value = localStorage.onePm
-    document.getElementById('twoPm').value = localStorage.twoPm
-    document.getElementById('threePm').value = localStorage.threePm
-    document.getElementById('fourPm').value = localStorage.fourPm
-    document.getElementById('fivePm').value = localStorage.fivePm
+    var stored = JSON.parse(localStorage.getItem(inputElId));
 
-    console.log(localStorage)
-    let testing = JSON.parse(localStorage.getItem(nineAm))
-    console.log(JSON.stringify(testing))
-  };
+    console.log(typeof JSON.stringify(stored))
 
-recallStorage();
-
+    document.getElementById('nineAm').value = localStorage.nineAm; 
+}}
+ storage.func();
 
 // changing bg color based on current time
 
