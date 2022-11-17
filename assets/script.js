@@ -7,6 +7,13 @@ function displayTime() {
 setInterval(displayTime, 1000);
 
 // grabbing DOM elements
+var DOMobj = {
+    saveButton: $('.saveBtn'),
+    rowParent : $(this.saveButton).parents()[1],
+     rowChild : $(rowParent).children()[0],
+     inputEl : $(rowChild).children()[0],
+     inputElId :$(rowChild).children()[0].id
+}
 
 var saveBtn = $('.saveBtn');
 
@@ -21,50 +28,66 @@ function test(){
     var inputEl = $(rowChild).children()[0]
     var inputElId = $(rowChild).children()[0].id
     
-    console.log($(rowParent).children()[2])
+   
 
     var btnParent = $(rowParent).children()[2]
     var thisBtn = $(btnParent).children()[0]
 
     thisBtn.innerHTML = "Save"
     
-    var nineAm = $('.nineAm')
-    nineAm.readOnly = false;
-    var tenAm = $('.tenAm')
-    tenAm.readOnly = false;
-    var elevenAm = $('.elevenAm')
-    elevenAm.readOnly = false;
-    var twelvePm = $('.twelvePm')
-    twelvePm.readOnly = false;
 
-    console.log(inputElId)
+    inputEl.readOnly = false;
+   
     
     localStorage.setItem(`${inputElId}`, $(inputEl).val())
     
+ 
     
-    
+    colorChanger(rowParent, inputEl);
     
 };
 
 const storage = {
     saveBtn: $('.saveBtn'),
     func: function recallStorage (){
-        var rowParent = $(this.saveBtn).parents()[1]
-        var rowChild = $(rowParent).children()[0]
-        var inputEl = $(rowChild).children()[0]
-        var inputElId = $(rowChild).children()[0].id
+        let rowParent = $(this.saveBtn).parents()[1]
+        let rowChild = $(rowParent).children()[1]
+        let inputEl = $(rowChild).children()[0]
+        let inputElId = $(rowChild).children()[0].id
         
-        var stored = JSON.parse(localStorage.getItem(inputElId));
-        
-        console.log(typeof JSON.stringify(stored))
         
         document.getElementById('nineAm').value = localStorage.nineAm; 
+        document.getElementById('tenAm').value = localStorage.nineAm; 
+        document.getElementById('elevenAm').value = localStorage.elevenAm; 
+        document.getElementById('twelvePm').value = localStorage.twelvePm; 
+        document.getElementById('onePm').value = localStorage.onePm; 
+        document.getElementById('twoPm').value = localStorage.twoPm; 
+        document.getElementById('threePm').value = localStorage.threePm; 
+        document.getElementById('fourPm').value = localStorage.fourPm; 
+        document.getElementById('fivePm').value = localStorage.fivePm; 
+
+             
 
         
-    }}
+}}
+
  storage.func();
 
 // changing bg color based on current time
 
 
+function colorChanger(rowParent, inputEl){
+    var rowChild = $(rowParent).children()[1]
+    var labelEl = $(rowChild).children()[0]
+    
+
+    if(labelEl.innerHTML !== moment().format('hh A')){
+        inputEl.style.backgroundColor = 'red';
+    } else if(labelEl.innerHTML = moment().format('hh A')){
+        inputEl.style.backgroundColor = 'green';
+    }
+
+   
+    
+}
 
