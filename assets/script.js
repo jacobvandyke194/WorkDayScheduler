@@ -57,7 +57,7 @@ const storage = {
         
         
         document.getElementById('nineAm').value = localStorage.nineAm; 
-        document.getElementById('tenAm').value = localStorage.nineAm; 
+        document.getElementById('tenAm').value = localStorage.tenAm; 
         document.getElementById('elevenAm').value = localStorage.elevenAm; 
         document.getElementById('twelvePm').value = localStorage.twelvePm; 
         document.getElementById('onePm').value = localStorage.onePm; 
