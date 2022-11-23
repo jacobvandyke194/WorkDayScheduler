@@ -7,13 +7,13 @@ function displayTime() {
 setInterval(displayTime, 1000);
 
 // grabbing DOM elements
-var DOMobj = {
-    saveButton: $('.saveBtn'),
-    rowParent : $(this.saveButton).parents()[1],
-     rowChild : $(rowParent).children()[0],
-     inputEl : $(rowChild).children()[0],
-     inputElId :$(rowChild).children()[0].id
-}
+// var DOMobj = {
+//     saveButton: $('.saveBtn'),
+//     rowParent : $(this.saveButton).parents()[1],
+//      rowChild : $(this.rowParent).children()[0],
+//      inputEl : $(this.rowChild).children()[0],
+//      inputElId :$(this.rowChild).children()[0].id
+// }
 
 var saveBtn = $('.saveBtn');
 
